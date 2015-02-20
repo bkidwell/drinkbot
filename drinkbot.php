@@ -45,8 +45,10 @@ class drinkbot extends module {
             }
 
             if(preg_match($this->re_find_drinks, $text) == 1) {
-                $this->reply($line, $this->catchphrase . $this->get_suffix($text));
-                if(!$is_private) { $this->catch_quiet = $t + 10; }
+                if($is_private || rand(1, 5) == 1) {
+                    $this->reply($line, $this->catchphrase . $this->get_suffix($text));
+                    if(!$is_private) { $this->catch_quiet = $t + 10; }
+                }
                 return;
             }
         }
